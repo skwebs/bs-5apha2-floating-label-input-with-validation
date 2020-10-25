@@ -1,0 +1,104 @@
+:root {
+	--small-font: .75rem;
+}
+
+.form {
+	width: 360px;
+	padding: 4rem 2rem;
+	border-radius: 1rem;
+}
+
+card {
+	box-shadow: 0 10px 25px rgba(92, 99, 15, .2);
+}
+
+.form-group {
+	position: relative;
+	height: 48px;
+	margin-bottom: 1.5rem;
+}
+
+.form-control, .form-select {
+	border: 1.2px solid #ced4da;
+	/*border-radius: .5rem;*/;
+}
+
+.form-control {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	outline: none;
+	background: none;
+	padding: 1rem;
+	z-index: 1;
+}
+
+.form_label, label {
+	position: absolute;
+	left: 1rem;
+	top: 1rem;
+	padding: 0 .25rem;
+	background: #fff;
+	color: #777;
+	transition: .3s;
+	line-height: 1;
+}
+
+.form-control:focus + label,
+	.form-control:focus + .form_label {
+	top: -.5rem;
+	left: .8rem;
+	color: var(--bs-primary);
+	font-size: var(--small-font);
+	font-weight: 500;
+	z-index: 10;
+}
+
+.form-control:not(:placeholder-shown).form-control:not(:focus)+ label,
+	.form-control:not(:placeholder-shown).form-control:not(:focus)+ .form_label {
+	top: -.5rem;
+	left: .8rem;
+	font-size: var(--small-font);
+	font-weight: 500;
+	z-index: 10;
+}
+
+.form-control:focus,
+	.was-validated.form-control:focus ,
+	.form-select:focus,
+	.was-validated.form-select:focus {
+	border-width: 2px;
+}
+
+.form-group select:valid ~ label,
+	form-group select:focus ~ label {
+	top: -.5rem;
+	left: .8rem;
+	font-size: var(--small-font);
+	font-weight: 500;
+	z-index: 1;
+}
+	/* validation css */
+	/* input */
+.was-validated .form-control:valid:not(:placeholder-shown) ~ label,
+	.was-validated .form-control:valid:focus:placeholder-shown ~ label {
+	color: var(--bs-success);
+}
+
+.was-validated .form-control:invalid:not(:placeholder-shown) ~ label,
+	.was-validated .form-control:invalid:focus:placeholder-shown ~ label {
+	color: var(--bs-danger);
+}
+	
+	
+	/* select */
+.was-validated .form-select:valid ~ label {
+	color: var(--bs-success);
+ /*#777;*/;
+}
+
+.form-group select:focus ~ label {
+	color: var(--bs-primary);
+}

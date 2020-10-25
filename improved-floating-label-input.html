@@ -24,15 +24,14 @@
 
 	<!-- all css vendors file-->
 	<link rel="stylesheet" href="./assets/vendors/bootstrap/5.0.0-alpha2/bootstrap.min.css" />
-	<link rel="stylesheet" href="./assets/vendors/bootstrap/5.0.0-alpha2/bs5a2-reset.css" />
+	<link rel="stylesheet" href="./assets/vendors/bootstrap/5.0.0-alpha2/bs5a2-reset-sm.css" />
 	<link rel="stylesheet" href="./assets/vendors/jquery-ui/1.12.1/jquery-ui.min.css">
 	<link rel="stylesheet" href="./assets/vendors/sweetalert2/10.6.1/sweetalert2.min.css" />
 	
-	<link rel="stylesheet" href="./assets/css/style.css?v1" />
-	<link rel="stylesheet" href="./assets/css/floating-label.css" />
+	<link rel="stylesheet" href="./assets/css/style.css?v1.1" />
+	<link rel="stylesheet" href="./assets/css/improved-floating-label.css" />
 	<!-- all page css -->
 	<style type="text/css">
-
 </style>
 
 </head>
@@ -57,9 +56,6 @@
         <a class="nav-link" href="float-label-input-with-bs5a2.html">Float Label with BS-5</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="improved-floating-label-input.html">Floating Label with Bootstrap</a>
-        </li>
-        <li class="nav-item">
         <a class="nav-link" href="https://github.com/skwebs/bs-5apha2-floating-label-input-with-validation/archive/master.zip">Download</a>
         </li>
       </ul>
@@ -70,9 +66,11 @@
 
 <main>
 <div class="box d-flex p-2 my-5 py-md-5 justify-content-center align-item-center">
-   <div class="card">
-       <div class="card-header pb-0"><img height="80" class="d-block mx-auto border rounded-circle shadow" src="./assets/img/skwebs-logo.png" ><h3 class="p-2 text-center" >Student Registration Form</h3></div>
-       <div class="card-body p-4">
+   <div class="card shadow">
+       <div class="card-header pb-0">
+	       <img height="80" class="d-block mx-auto border rounded-circle shadow mt-1" src="./assets/img/skwebs-logo.png" >
+	       <h3 class="p-2 text-secondary text-center" >Student Registration Form</h3></div>
+       <div class="card-body px-4 py-5">
            <form id="regForm" class="needs-validation mx-md-5" action="action.php"  novalidate method="post" autocomplete="off" >
                
                <div class="form-group ">
@@ -85,10 +83,10 @@
                           data-toggle="tooltip" 
                           data-title="Only alphabet characters are allowed. <strong>First Name</strong> must have minimum 3 characters, start with capital letter." 
                           autofocus="autofocus" 
-                          placeholder="First Name" 
+                          placeholder=" " 
                           required 
                       pattern="^[A-Z]{1}[a-z]{2,10}$" >
-               <label for="first_name" class="">First Name</label>
+               <label for="first_name" class="form_label">First Name</label>
                </div>
                
 				<div class="form-group">
@@ -100,7 +98,7 @@
                            title="Only alphabet characters are allowed. Middle Name must have minimum 3 characters, start with capital letter." 
                            data-toggle="tooltip" 
                             data-title="Only alphabet characters are allowed. <strong>Middle Name</strong> must have minimum 3 characters, start with capital letter." 
-                            placeholder="Middle Name" 
+                            placeholder=" " 
                         pattern="^(\s*|[A-Z]{1}[a-z]{2,10})$">
                    <label for="mid_name" class=" text-md-right">Middle Name</label>
                </div>
@@ -114,7 +112,7 @@
                            title="Only alphabet characters are allowed. Last Name must have minimum 3 characters, start with capital letter." 
                            data-toggle="tooltip" 
                            data-title="Only alphabet characters are allowed. <strong>Last Name</strong> must have minimum 3 characters, start with capital letter." 
-                           placeholder="Last Name" 
+                           placeholder=" " 
                            required 
                        pattern="^[A-Z]{1}[a-z]{2,10}$" >
                <label for="last_name" class="">Last Name</label>
@@ -153,7 +151,7 @@
                            data-field-name="Gender" 
                            title="Gender is required field . Please select an option." 
                            data-title="<strong>Gender</string> is required field . Please select an option." 
-                           placeholder="Gender" 
+                           placeholder=" " 
                            required 
                        pattern="[^\0]" >
                         
@@ -170,11 +168,10 @@
                            id="dob" 
                            type="text"  
                            class="form-control form-control-lg" 
-                           placeholder="DD-MM-YYYY" 
                            data-field-name="Date of Birth" 
                            title="Date of birth is required field. Please select an option." 
                            data-title="Please must select your <strong>date of birth</strong>."  
-                           placeholder="Date of Birth" 
+                           placeholder=" "
                            required 
                        pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" >
                <label for="dob" class="">Date of Birth</label>
@@ -191,7 +188,7 @@
 					        data-title="Only 10 digits <strong>mobile no.</strong> allowed that starts with 6,7,8 or,9." 
 					        maxlength="10"  
 					        class="form-control form-control-lg" 
-					        placeholder="Mobile Number" 
+					        placeholder=" " 
 					        required
 				        pattern="^[6-9]\d{9}$" >
 				<label for="mobile" class="">Mobile No.</label>
@@ -205,7 +202,7 @@
                            name="father" 
                            data-field-name="Father's Name" 
                            data-title="Only alphabet, space and dot(.) are allowed in <strong>father's name</strong>, Must start with capital letter." 
-                           placeholder="Father's Name" 
+                           placeholder=" " 
                            required
                        pattern="^([A-Z][a-z]{2,}|[A-Z][a-z]*(\s|.\s|.|)[A-Z][a-z]{2,}|[A-Z][a-z]*(\s|.\s|.|)[A-Z][a-z]*(\s|.\s|.|)[A-Z][a-z]{2,})$" >
                <label for="father_name" class="">Father's Name</label>
@@ -220,7 +217,7 @@
                            data-title="Only alphanumeric, space and , . - + symbols are allowed in  <strong>present address</strong> field." 
                            class="form-control form-control-lg" 
                            title="Only alphanumeric, space and , . - + symbols are allowed in  present address field." 
-                           placeholder="Present Address" 
+                           placeholder=" " 
                            required
                        pattern="^[A-Z][a-zA-Z0-9\s,+-\.]+$" >
 	               <label for="present_address" class="">Present Address</label>
