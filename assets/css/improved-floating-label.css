@@ -2,16 +2,6 @@
 	--small-font: .75rem;
 }
 
-.form {
-	width: 360px;
-	padding: 4rem 2rem;
-	border-radius: 1rem;
-}
-
-card {
-	box-shadow: 0 10px 25px rgba(92, 99, 15, .2);
-}
-
 .form-group {
 	position: relative;
 	height: 48px;
@@ -19,7 +9,7 @@ card {
 }
 
 .form-control, .form-select {
-	border: 1.2px solid #ced4da;
+	border: 1px solid #ced4da;
 	/*border-radius: .5rem;*/;
 }
 
@@ -66,10 +56,10 @@ card {
 }
 
 .form-control:focus,
-	.was-validated.form-control:focus ,
-	.form-select:focus,
-	.was-validated.form-select:focus {
-	border-width: 2px;
+.was-validated.form-control:focus ,
+.form-select:focus,
+.was-validated.form-select:focus {
+	border-width: 1px;
 }
 
 .form-group select:valid ~ label,
@@ -77,14 +67,16 @@ card {
 	top: -.5rem;
 	left: .8rem;
 	font-size: var(--small-font);
+	border-width: 1.1px;
 	font-weight: 500;
 	z-index: 1;
 }
 	/* validation css */
 	/* input */
 .was-validated .form-control:valid:not(:placeholder-shown) ~ label,
-	.was-validated .form-control:valid:focus:placeholder-shown ~ label {
+.was-validated .form-control:valid:focus:placeholder-shown ~ label {
 	color: var(--bs-success);
+	border-width: 1.2px;
 }
 
 .was-validated .form-control:invalid:not(:placeholder-shown) ~ label,
