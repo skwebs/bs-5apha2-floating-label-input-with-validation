@@ -62,8 +62,8 @@
 	border-width: 1px;
 }
 
-.form-group select:valid ~ label,
-	form-group select:focus ~ label {
+.form-group .form-select:valid ~ label,
+.form-group .form-select:active ~ label {
 	top: -.5rem;
 	left: .8rem;
 	font-size: var(--small-font);

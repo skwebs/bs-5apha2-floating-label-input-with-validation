@@ -41,13 +41,14 @@
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), 50%), url("https://anshumemorial.in/test/m/assets/img/web/laptop1.jpg") fixed center 100%/cover
 	}
 	
-	.btn.btn-primary{
+	.btn.btn-grad-blue{
 	background: linear-gradient(119.54deg, #000046 0%, #1CB5E0 100%);
 	background: -webkit-linear-gradient(119.54deg, #1CB5E0, #000046);
+	color:#fff;
 	}
-	.btn.btn-primary:hover, 
-	.btn.btn-primary:active, 
-	.btn.btn-primary:focus{
+	.btn.btn-grad-blue:hover, 
+	.btn.btn-grad-blue:active, 
+	.btn.btn-grad-blue:focus{
 	background: linear-gradient(119.54deg, #000046 10%, #1CB5E0 60%);
 	background: -webkit-linear gradient(119.54deg, #1CB5E0, #000046);
 	}

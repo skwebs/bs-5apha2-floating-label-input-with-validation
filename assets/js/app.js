@@ -7,9 +7,12 @@
 		    // Loop over them and prevent submission
 		    var validation = Array.prototype.filter.call(forms, function(form) {
 		      form.addEventListener('submit', function(event) {
-		        if (form.checkValidity() === false) {
+		        if (form.checkValidity() == false) {
 		          event.preventDefault();
 		          event.stopPropagation();
+		        // if form not valid
+		        }else{
+		        // if form valid
 		        }
 		        form.classList.add('was-validated');
 		      }, false);
@@ -46,7 +49,7 @@
 					}
 					return false;
 				} else {
-					
+					//alert("ok");
 					/*$.ajax( regForm.attr("action"){
 						
 					});*/
@@ -56,6 +59,9 @@
 		}
 		});
 		
+		regForm.submit(function(){
+		//alert('ok')
+		})
 		$("#regForm .form-control, #regForm .form-select").on({
 			keyup:function(){
 				var _this = $(this);
