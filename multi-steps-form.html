@@ -83,12 +83,9 @@
 		cursor: pointer;
 	}
 	
-	#Form2 {
-		left: 450px;
-	}
-	
-	#Form3 {
-		left: 450px;
+	#Form2 ,#Form3 {
+		/*left: 450px;*/
+		transform:scale(0);
 	}
 	
 	.step-button {
@@ -186,8 +183,10 @@
 	Next1.onclick = function(e) {
 		e.preventDefault();
 		if(Form1.checkValidity() === true) {
-			Form1.style.left = "-450px";
-			Form2.style.left = "40px";
+			Form1.style.transform = "scale(0)";
+			Form2.style.transform = "scale(1)";
+			/*Form1.style.left = "-450px";
+			Form2.style.left = "40px";*/
 			progress.style.width = "240px";
 		} else {
 			alert("Please fill the all input.")
@@ -196,8 +195,10 @@
 	Next2.onclick = function(e) {
 		e.preventDefault();
 		if(Form2.checkValidity() === true) {
-			Form2.style.left = "-450px";
-			Form3.style.left = "40px";
+			Form2.style.transform = "scale(0)";
+			Form3.style.transform = "scale(1)";
+		/*	Form2.style.left = "-450px";
+			Form3.style.left = "40px";*/
 			progress.style.width = "360px";
 		} else {
 			alert("Please fill the all input.")
@@ -205,14 +206,18 @@
 	}
 	Back1.onclick = function(e) {
 		e.preventDefault();
-		Form1.style.left = "40px";
-		Form2.style.left = "450px";
+		Form1.style.transform = "scale(1)";
+		Form2.style.transform = "scale(0)";
+		/*Form1.style.left = "40px";
+		Form2.style.left = "450px";*/
 		progress.style.width = "120px";
 	}
 	Back2.onclick = function(e) {
 		e.preventDefault(e);
-		Form2.style.left = "40px";
-		Form3.style.left = "450px";
+		Form2.style.transform = "scale(1)";
+		Form3.style.transform = "scale(0)";
+		/*Form2.style.left = "40px";
+		Form3.style.left = "450px";*/
 		progress.style.width = "240px";
 	}
 	document.querySelector("#finish").onclick = function(e) {
