@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Multy Steps Form</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: sans-serif;
+	}
+	
+	body {
+		background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(https://images.pexels.com/photos/994605/pexels-photo-994605.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		min-height: 100vh;
+	}
+	
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.container {
+		width: 360px;
+		height: 400px;
+		margin: 8% auto;
+		background: #fff;
+		border-radius: 5px;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	h1 {
+		text-align: center;
+		margin-bottom: 40px;
+		color: #777;
+	}
+	
+	.container form {
+		width: 280px;
+		position: absolute;
+		top: 100px;
+		left: 40px;
+		transition: .5s;
+	}
+	
+	form input {
+		width: 100%;
+		padding: 10px 5px;
+		margin: 5px 0;
+		border: 0;
+		border-bottom: 1px solid #999;
+		outline: none;
+		background: transparent;
+	}
+	
+	::placeholder {
+		color: #777;
+	}
+	
+	.btn-box {
+		width: 100%;
+		margin: 30px auto;
+		text-align: center;
+	}
+	
+	form button {
+		width: 110px;
+		height: 35px;
+		margin: 0 10px;
+		background-image: linear-gradient(to right, #ff105f, #ffad06);
+		border-radius: 30px;
+		border: 0;
+		outline: none;
+		color: #fff;
+		cursor: pointer;
+	}
+	
+	#Form2 ,#Form3 {
+		/*left: 450px;*/
+		transform:scale(0);
+	}
+	
+	.step-button {
+		width: 360px;
+		height: 40px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		box-shadow: 0 -1px 5px -1px #000;
+		position: relative;
+	}
+	
+	.step-col {
+		width: 120px;
+		text-align: center;
+		color: #ccc;
+		position: relative;
+	}
+	
+	#progress {
+		position: absolute;
+		height: 100%;
+		width: 120px;
+		/*background-image:linear-gradient(to right, #ff105f, #ffad06);
+*/
+		background: green;
+		transition: .5s;
+	}
+	
+	#progress::after {
+		content: '';
+		height: 0;
+		width: 0;
+		border-top: 20px solid transparent;
+		border-bottom: 20px solid transparent;
+		position: absolute;
+		top: 0;
+		right: -20px;
+		/*border-left:20px solid #ffad06;*/
+		border-left: 20px solid green;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		<div class="container">
+			<form id="Form1">
+				<h1>CREATE ACCOUNT</h1>
+				<input required type="text" placeholder="Email">
+				<input required type="password" id="" placeholder="Password">
+				<input required type="password" placeholder="Confirm Password">
+				<div class="btn-box">
+					<button id="Next1">Next</button>
+				</div>
+			</form>
+			<form id="Form2">
+				<h1>SOCIAL LINKS</h1>
+				<input required type="text" placeholder="Twitter">
+				<input required type="text" id="" placeholder="Github">
+				<input required type="text" placeholder="Lunkedin">
+				<div class="btn-box">
+					<button type="button" id="Back1">Back</button>
+					<button type="button" id="Next2">Next</button>
+				</div>
+			</form>
+			<form id="Form3">
+				<h1>PERSONAL INFO</h1>
+				<input required type="text" placeholder="First Name">
+				<input required type="text" id="" placeholder="Last Name">
+				<input required type="text" placeholder="Mobile No.">
+				<div class="btn-box">
+					<button type="button" id="Back2">Back</button>
+					<button type="button" id="finish">Submit</button>
+				</div>
+			</form>
+			<div class="step-button">
+				<div id="progress"></div>
+				<div class="step-col"><small>Step 1</small></div>
+				<div class="step-col"><small>Step 2</small></div>
+				<div class="step-col"><small>Step 3</small></div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	"use strict";
+	var Form1 = document.querySelector("#Form1");
+	var Form2 = document.querySelector("#Form2");
+	var Form3 = document.querySelector("#Form3");
+	var Next1 = document.querySelector("#Next1");
+	var Next2 = document.querySelector("#Next2");
+	var Back1 = document.querySelector("#Back1");
+	var Back2 = document.querySelector("#Back2");
+	var progress = document.querySelector("#progress");
+	Next1.onclick = function(e) {
+		e.preventDefault();
+		if(Form1.checkValidity() === true) {
+			Form1.style.transform = "scale(0)";
+			Form2.style.transform = "scale(1)";
+			/*Form1.style.left = "-450px";
+			Form2.style.left = "40px";*/
+			progress.style.width = "240px";
+		} else {
+			alert("Please fill the all input.")
+		}
+	}
+	Next2.onclick = function(e) {
+		e.preventDefault();
+		if(Form2.checkValidity() === true) {
+			Form2.style.transform = "scale(0)";
+			Form3.style.transform = "scale(1)";
+		/*	Form2.style.left = "-450px";
+			Form3.style.left = "40px";*/
+			progress.style.width = "360px";
+		} else {
+			alert("Please fill the all input.")
+		}
+	}
+	Back1.onclick = function(e) {
+		e.preventDefault();
+		Form1.style.transform = "scale(1)";
+		Form2.style.transform = "scale(0)";
+		/*Form1.style.left = "40px";
+		Form2.style.left = "450px";*/
+		progress.style.width = "120px";
+	}
+	Back2.onclick = function(e) {
+		e.preventDefault(e);
+		Form2.style.transform = "scale(1)";
+		Form3.style.transform = "scale(0)";
+		/*Form2.style.left = "40px";
+		Form3.style.left = "450px";*/
+		progress.style.width = "240px";
+	}
+	document.querySelector("#finish").onclick = function(e) {
+		e.preventDefault();
+		if(Form3.checkValidity() === true) {
+			alert("form submitted.")
+		} else {
+			alert("Please fill the all input.")
+		}
+	}
+	</script>
+</body>
+
+</html>
