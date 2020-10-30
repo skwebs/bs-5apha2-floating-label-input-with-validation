@@ -24,13 +24,8 @@
 	<link rel="stylesheet" href="./assets/css/style.css?v1.1" />
 	<link rel="stylesheet" href="./assets/css/floating-label-input.css" />
 	<!-- all page css -->
-	
-	<style type="text/css"media="screen and (max-height: 600px)" >
-	.formBox {
-	width:420;
-	}
+	<style type="text/css"media="screen and (max-height: 900px)" >
 	</style>
-	
 	<style>
 
 	
@@ -49,16 +44,15 @@ body {
 main {position:relative;}
 
 
-.formBox {
-	width:360px;
+.containers {
+	width: 360px;
 	height: 430px;
-	top:150px;
-	left: calc( 50% - 180px);
 	margin: auto;
 	background: #fff;
 	border-radius: 5px;
 	position:absolute;
-	/*top:calc( 50% - 235px + 28px );*/
+	top:calc( 50% - 235px + 28px );
+	left: calc( 50% - 180px);
 	overflow: hidden;
 }
 
@@ -69,13 +63,14 @@ h1 {
 	font-size:2rem;
 }
 
-.formBox .tab {
-	width:280px;
+.containers .tab {
+	width: 280px;
+	position: absolute;
 	top: 75px;
 	left: 40px;
-	position: absolute;
 	transition: .5s;
 }
+
 ::placeholder {
 	color: #777;
 }
@@ -108,21 +103,21 @@ h1 {
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
-	box-shadow: 0 -1px 5px -1px #000 ;
+	box-shadow: 0 -1px 5px -1px #000;
 	position: relative;
 }
 
 .step-col {
-	width:120px;
+	width: 120px;
 	text-align: center;
 	color: #ccc;
 	position: relative;
 }
 
 #progress {
-	width:120px;
 	position: absolute;
 	height: 100%;
+	width: 120px;
 	/*background-image:linear-gradient(to right, #ff105f, #ffad06);
 */
 	background: green;
@@ -176,7 +171,7 @@ h1 {
 		</nav>
 	</header>
 	<main>
-		<div class="formBox">
+		<div class="containers">
 			<form id="tab1" class="tab" >
 				<h1>CREATE ACCOUNT</h1>
 				<div class="form-group ">
@@ -380,7 +375,6 @@ h1 {
 <script defer src="./assets/js/ap.js"></script>
 <script type="text/javascript">
 "use strict";
-//alert(document.querySelector(".formBox").offsetHeight)
 var tab1 = document.querySelector("#tab1");
 var tab2 = document.querySelector("#tab2");
 var tab3 = document.querySelector("#tab3");
