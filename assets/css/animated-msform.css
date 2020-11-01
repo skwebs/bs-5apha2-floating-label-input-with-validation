@@ -120,3 +120,6 @@ body{
 	background: #27AE60;
 	color: white;
 }
+
+/*added */
+.msform ol, .msform ul{padding-left:0 ;}

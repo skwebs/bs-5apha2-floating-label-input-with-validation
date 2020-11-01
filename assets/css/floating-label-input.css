@@ -1,3 +1,4 @@
+
 :root {
 	--small-font: .75rem;
 }
@@ -37,7 +38,7 @@
 }
 
 .form-control:focus + label,
-	.form-control:focus + .form_label {
+.form-control:focus + .form_label {
 	top: -.5rem;
 	left: .8rem;
 	color: var(--bs-primary);
@@ -56,9 +57,11 @@
 }
 
 .form-control:focus,
-.was-validated.form-control:focus ,
 .form-select:focus,
-.was-validated.form-select:focus {
+.was-validated.form-control:focus ,
+.was-validated.form-select:focus,
+.form-control.is-valid:focus ,
+.form-select.is-valid:focus {
 	border-width: 1px;
 }
 
@@ -74,19 +77,24 @@
 	/* validation css */
 	/* input */
 .was-validated .form-control:valid:not(:placeholder-shown) ~ label,
-.was-validated .form-control:valid:focus:placeholder-shown ~ label {
+.was-validated .form-control:valid:focus:placeholder-shown ~ label,
+.form-control.is-valid:valid:not(:placeholder-shown) ~ label,
+.form-control.is-valid:valid:focus:placeholder-shown ~ label {
 	color: var(--bs-success);
 	border-width: 1.2px;
 }
 
 .was-validated .form-control:invalid:not(:placeholder-shown) ~ label,
-	.was-validated .form-control:invalid:focus:placeholder-shown ~ label {
+.was-validated .form-control:invalid:focus:placeholder-shown ~ label,
+.form-control.is-invalid:invalid:not(:placeholder-shown) ~ label,
+.form-control.is-invalid:invalid:focus:placeholder-shown ~ label {
 	color: var(--bs-danger);
 }
 	
 	
 	/* select */
-.was-validated .form-select:valid ~ label {
+.was-validated .form-select:valid ~ label,
+.form-select.is-valid:valid ~ label {
 	color: var(--bs-success);
  /*#777;*/;
 }
