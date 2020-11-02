@@ -107,15 +107,15 @@ height:inherit;
 <div class="msform">
 	<!-- progressbar -->
 	<ul class="progressbar">
-		<li class="active">Account Setup</li>
-		<li>Social Profiles</li>
+		<li class="active">Name Section</li>
 		<li>Personal Details</li>
-	<li>Upload image</li>
+		<li>Contact Details
+		<li>Upload image</li>
 	</ul>
 	<!-- .pages -->
 	<form class="page" >
 		
-		<h2 class="fs-title">Create your account</h2>
+		<h2 class="fs-title">Enter Your Name</h2>
 		<h3 class="fs-subtitle">This is step 1</h3>
 <div class="form-group ">
 	<input name="first_name"  
@@ -168,8 +168,8 @@ height:inherit;
 		<input type="button" name="next" class="next btn btn-primary text-right" value="Next" />
 	</form>
 	<form class="page" >
-		<h2 class="fs-title">Social Profiles</h2>
-		<h3 class="fs-subtitle">Your presence on the social network</h3>
+		<h2 class="fs-title">Personal Details</h2>
+		<h3 class="fs-subtitle">This is step 2</h3>
 <div class="form-group">
 	<select name="class" 
 		id="class"  
@@ -236,8 +236,8 @@ height:inherit;
 		<input type="button" name="next" class="next btn btn-primary ml-2" value="Next" />
 	</form>
 	<form class="page" >
-		<h2 class="fs-title">Personal Details</h2>
-		<h3 class="fs-subtitle">We will never sell it</h3>
+		<h2 class="fs-title">Contact Details</h2>
+		<h3 class="fs-subtitle">This is step 3</h3>
 <div class="form-group">
 	<input name="mobile" 
 		type="tel"  
@@ -288,21 +288,33 @@ height:inherit;
 		<input type="button" name="previous" class="previous btn btn-secondary mr-2" value="Previous" />
 		<input type="button" name="next" class="next btn btn-primary ml-2" value="Next" />
 	</form>
-		
+
 		<form class="page" >
 		<h2 class="fs-title">Upload Image</h2>
-		<h3 class="fs-subtitle">We will never sell it</h3>
+		<h3 class="fs-subtitle">This is step 4</h3>
 
 <div class="imgBox mx-auto mb-3" >
 	<label for="select-img">
 	<img id="user-img" src="./assets/img/wa-sq-user-img.png">
 	</label>
-	<input id="select-img" type="file" class="visually-hidden" >
+<input name="select-img" 
+	type="file"  
+	data-toggle="tooltip" 
+	title="Select image." 
+	id="select-img" 
+	data-field-name="Image." 
+	data-title="Select image." 
+	class="inp visually-hidden" 
+	placeholder=" " 
+	required
+	onchange="validateInp(this)" 
+attern="" >
 </div>
 			
 		<input type="button" name="previous" class="previous btn btn-secondary mr-2" value="Previous" />
 		<input type="submit" name="submit" class="submit btn btn-success ml-2" value="Submit" />
 	</form>
+
 </div>
 </div>
 
@@ -408,7 +420,11 @@ $(".previous").click(function(){
 	});
 });
 
-$(".submit").click(function(){
+$(".submit").click(function(e){
+	e.preventDefault();
+	if(validateForm($(this).parent()[0]) == true){
+		alert("ok")
+	}
 	return false;
 })
 
@@ -475,7 +491,12 @@ function validateForm(x) {
 		// If a field is empty...
 		if(y[i].checkValidity() === false) {
 			//if (y[i].value == "") {
-			y[i].focus();
+			if(y[i].getAttribute("type") == "file"){
+				y[i].click();
+			}else{
+				y[i].focus();
+			}
+			//alert(JSON.stringify(y[i].getAttribute("type")));
 			Swal.fire("Reuired", y[i].getAttribute("data-title"))
 				// add an "invalid" class to the field:
 			y[i].className += " is-invalid";
@@ -492,8 +513,7 @@ function validateForm(x) {
 	}
 	return valid; // return the valid status
 }
-
-
 </script>
+
 	</body>
 </html>
