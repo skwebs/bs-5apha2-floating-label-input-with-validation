@@ -43,7 +43,7 @@ function save_jpg($data){
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     extract($_POST);
     //	change extention jpeg into jpg
-    
+    var_dump($_POST);
     //	set cropped image name according to date & time
     $img_name = date("Ymd_His") . ".jpg";
     $imgPath = $compress_img_dir . "IMG_1_" . $img_name;

@@ -43,24 +43,129 @@
 
 /*basic reset*/
 * {margin: 0; padding: 0;}
-.imgBox{
+/* user image preview */
+.user-img-preview{
 position:relative;
 top:0;
 left:0;
 width:200px;
 height:200px;
 display:block;
-background:red;
+overflow:hidden;
 }
-.imgBox label,#user-img {
+#user-img {
 position:absolute;
 top:0;
 left:0;
-padding:0 ;
-width:inherit;
-height:inherit;
+padding:0 !important;
+margin:0 !important;width:100%;
+height:100%;
+}
+.user-img-preview .tool{
+position:absolute;
+bottom:-0px;
+left:0;
+width:200px;
+height:50px;
+background:rgba(0,0,0,.5);
+z-index:1;
+transition:.3s;
+display:flex;
+}
+.user-img-preview:hover .tool{
+ransform:translateY(0);
+bottom:0;
+}
+.user-img-preview .tool .toolBtn {
+position:relative;
+flex-grow:1;
+height:100%;
+background:transparent;
+border:none;
+color:#fff;
+}
+.user-img-preview .tool .toolBtn .fa{
+position:absolute;
+top:20%;
+left:50%;
+transform:translateX(-50%);
+white-space:nowrap;
+}
+.user-img-preview .tool .toolBtn span{
+position:absolute;
+bottom:15%;
+font-size:.5rem;
+left:50%;
+transform:translateX(-50%);
+white-space:nowrap;
+}
+.user-img-preview .tool button:active {
+background:#000;
+outline:none;
+}
+.user-img-preview .tool button:hover{
+outline:none;
 }
 
+/* edit image section */
+.editBox {
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(200,200,200,.5);
+}
+.editBox img.editCropBox{
+	width:300px;
+	height:300px;
+	background:#fff;
+}
+.editTool{
+	display:flex;
+	width: 100%;
+	background:rgba(0,0,0,.8);
+	height:49px;
+}
+.editTool .cropToolBtn {
+flex-grow:1;
+height:100%;
+background:transparent;
+border:none;
+color:#fff;
+transition:0.3s ;
+position:relative;
+}
+.editTool .cropToolBtn .fa{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+top:25%;
+}
+.editTool .cropToolBtn span{
+position:absolute;
+bottom:15%;
+font-size:.5rem;
+left:50%;
+transform:translateX(-50%);
+white-space:nowrap;
+}
+.editTool .cropToolBtn:active {
+background:var(--bs-info);
+backgroun:;
+outline:none;
+}
+.editTool .cropToolBtn:hover {
+outline:none;
+}
+.cropBox, .cropBox img{
+width:200px;
+height:200px;
+position:relative;
+}
+.modal-content{
+width:360px !important;
+}
 </style>
 </head>
 
@@ -109,12 +214,54 @@ height:inherit;
 	<ul class="progressbar">
 		<li class="active">Name Section</li>
 		<li>Personal Details</li>
-		<li>Contact Details
+		<li>Contact Details</li>
 		<li>Upload image</li>
 	</ul>
-	<!-- .pages -->
-	<form class="page" >
+	<form id="msform" >
+	<!-- page 
+	<div class="page" >
+	<h2 class="fs-title">Upload Image</h2>
+	<h3 class="fs-subtitle">This is step 4</h3>
+	
+	<div class="user-img-preview mx-auto borde mb-3" >
+		<img id="user-img" class="border"  src="./assets/img/wa-sq-user-img.png">
+	<input name="select-img" 
+		type="file"  
+		data-toggle="tooltip" 
+		title="Select image." 
+		id="select-img" 
+		data-field-name="Image." 
+		data-title="Select image." 
+		class="inp visually-hidden" 
+		placeholder=" " 
+		required
+		onchange="validateInp(this)" 
+	attern="" >
+		<div class="tool" >
+			<button type="button" class="toolBtn" ><i class="fa fa-upload" aria-hidden="true"></i><span>Change Image</span></button>
+			<button type="button" class="toolBtn" ><i class="fa fa-pencil mx-auto" aria-hidden="true"></i><span>Edit Image</span></button>
+		</div>
+	</div>
 		
+	<input type="button" name="previous" class="previous btn btn-secondary mr-2" value="Previous" />
+	<input type="submit" name="submit" class="submit btn btn-success ml-2" value="Submit" />
+		
+		<div class="editBox d-none" >
+			<img class="editCropBox mx-auto mt-2" src="./assets/img/wa-sq-user-img.png"  >
+			<div class="editTool" >
+				<button class="cropToolBtn" ><i class="fa fa-times" aria-hidden="true"></i><span>Cancel</span></button>
+				<button class="cropToolBtn" ><i class="fa fa-refresh " aria-hidden="true"></i><span>Reset</span></button>
+				<button class="cropToolBtn" ><i class="fa fa-undo" aria-hidden="true"></i><span>Rotate -45</span></button>
+				<button class="cropToolBtn" ><i class="fa fa-repeat " aria-hidden="true"></i><span>Rotate +45</button>
+				<button class="cropToolBtn" ><i class="fa fa-crop" aria-hidden="true"></i><span>Crop</span></button>
+				<button class="cropToolBtn" ><i class="fa fa-check " aria-hidden="true"></i><span>Save</span></button>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- .pages -->
+	<div class="page" >
 		<h2 class="fs-title">Enter Your Name</h2>
 		<h3 class="fs-subtitle">This is step 1</h3>
 <div class="form-group ">
@@ -166,8 +313,8 @@ height:inherit;
 </div>
              
 		<input type="button" name="next" class="next btn btn-primary text-right" value="Next" />
-	</form>
-	<form class="page" >
+	</div>
+	<div class="page" >
 		<h2 class="fs-title">Personal Details</h2>
 		<h3 class="fs-subtitle">This is step 2</h3>
 <div class="form-group">
@@ -234,8 +381,8 @@ height:inherit;
 </div>
 		<input type="button" name="previous" class="previous btn btn-secondary mr-2" value="Previous" />
 		<input type="button" name="next" class="next btn btn-primary ml-2" value="Next" />
-	</form>
-	<form class="page" >
+	</div>
+	<div class="page" >
 		<h2 class="fs-title">Contact Details</h2>
 		<h3 class="fs-subtitle">This is step 3</h3>
 <div class="form-group">
@@ -287,15 +434,59 @@ height:inherit;
 </div>
 		<input type="button" name="previous" class="previous btn btn-secondary mr-2" value="Previous" />
 		<input type="button" name="next" class="next btn btn-primary ml-2" value="Next" />
-	</form>
+	</div>
 
-		<form class="page" >
+<!-- page -->
+	<div class="page" >
+	<h2 class="fs-title">Upload Image</h2>
+	<h3 class="fs-subtitle">This is step 4</h3>
+	
+	<div class="user-img-preview mx-auto mb-3" >
+		<img id="user-img" class="border"  src="./assets/img/wa-sq-user-img.png">
+	<input name="select-img" 
+		type="file"  
+		ata-toggle="tooltip" 
+		title="Select image." 
+		id="select-img" 
+		data-field-name="Image." 
+		data-title="Select image." 
+		class="inp visually-hidden" 
+		placeholder=" " 
+		required
+		onchange="validateInp(this)" 
+	attern="" >
+		<div class="tool" >
+			<button type="button" class="toolBtn select-image" ><i class="fa fa-upload" aria-hidden="true"></i><span>Select Image</span></button>
+			<button type="button" class="toolBtn" ><i class="fa fa-pencil mx-auto" aria-hidden="true"></i><span>Edit Image</span></button>
+		</div>
+	</div>
+		
+	<input type="button" name="previous" class="previous btn btn-secondary mr-2" value="Previous" />
+	<input type="submit" name="submit" class="submit btn btn-success ml-2" value="Submit" />
+		
+		<div class="editBox d-none" >
+			<img class="editCropBox mx-auto mt-2" src="./assets/img/wa-sq-user-img.png"  >
+			<div class="editTool" >
+				<button type="button" class="cropToolBtn" ><i class="fa fa-times" aria-hidden="true"></i><span>Cancel</span></button>
+				<button type="button" class="cropToolBtn" ><i class="fa fa-refresh " aria-hidden="true"></i><span>Reset</span></button>
+				<button type="button" class="cropToolBtn" ><i class="fa fa-undo" aria-hidden="true"></i><span>Rotate -45</span></button>
+				<button type="button" class="cropToolBtn" ><i class="fa fa-repeat " aria-hidden="true"></i><span>Rotate +45</button>
+				<button type="button" class="cropToolBtn" ><i class="fa fa-crop" aria-hidden="true"></i><span>Crop</span></button>
+				<button type="button" class="cropToolBtn" ><i class="fa fa-check " aria-hidden="true"></i><span>Save</span></button>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+<!-- page 
+		<div class="page" >
 		<h2 class="fs-title">Upload Image</h2>
 		<h3 class="fs-subtitle">This is step 4</h3>
 
-<div class="imgBox mx-auto mb-3" >
+<div class="user-img-preview mx-auto mb-3" >
 	<label for="select-img">
-	<img id="user-img" src="./assets/img/wa-sq-user-img.png">
+	<img id="user-img" class="border"  src="./assets/img/wa-sq-user-img.png">
 	</label>
 <input name="select-img" 
 	type="file"  
@@ -310,11 +501,16 @@ height:inherit;
 	onchange="validateInp(this)" 
 attern="" >
 </div>
+
+
 			
 		<input type="button" name="previous" class="previous btn btn-secondary mr-2" value="Previous" />
 		<input type="submit" name="submit" class="submit btn btn-success ml-2" value="Submit" />
-	</form>
-
+		
+		
+-->
+	</div>
+</form>
 </div>
 </div>
 
@@ -331,15 +527,53 @@ attern="" >
 			</section>
 			<!-- // copyright section -->
 		</footer>
-	
+
+<!-- extra -->
+<!-- Modal -->
+<div class="modal fade" id="cropImageModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-0 mx-auto">
+      <div class="modal-header bg-primary text-white rounded-0">
+        <h5 class="modal-title" id="cropImageModalLabel">Crop Image</h5>
+        <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close" title="Close"  data-toggle="tooltip"></button>
+      </div>
+      <div class="modal-body">
+       <div class="cropBox mx-auto" >
+	       <img id="croppable-img" src="./assets/img/wa-sq-user-img.png">
+       </div>
+      </div>
+      <div class="modal-footer rounded-0 bg-light">
+        
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" title="Close" data-toggle="tooltip"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <button data-tool="reset" type="button" class="btn btn-primary" title="Reset" data-toggle="tooltip"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+        <div class="btn-group" role="group">
+	        <button data-tool="flipX" id="flipX" type="button" class="tool btn btn-primary" title="Flip Horizontally" data-toggle="tooltip"><i class="fa fa-arrows-h" aria-hidden="true"></i></button>
+	        <button data-tool="flipY" id="flipY" type="button" class="tool btn btn-primary" title="Flip Vertically" data-toggle="tooltip"><i class="fa fa-arrows-v" aria-hidden="true"></i></button>
+        </div>
+        <div class="btn-group" role="group">
+	        <button data-tool="rotateLeft" id="rotateLeft" type="button" class="tool btn btn-primary" title="Rotate (-45)" data-toggle="tooltip"><i class="fa fa-undo" aria-hidden="true"></i></button>
+	        <button data-tool="rotateRight" id="rotateRight" type="button" class="tool btn btn-primary" title="Rotate (+45)" data-toggle="tooltip"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+        </div>
+        <button id="cropBtn" type="button" class="btn btn-success" title="Crop Image" data-toggle="tooltip"><i class="fa fa-crop" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
 		<!-- all vendors js file-->
 		<script src="./assets/vendors/jquery/3.5.1/jquery.min.js"></script>
 		<script src="./assets/vendors/jquery-ui/1.12.1/jquery-ui.min.js"></script>
 		<script src="./assets/vendors/bootstrap/5.0.0-alpha2/bootstrap.bundle.min.js" ></script>
 		<script src="./assets/vendors/sweetalert2/10.6.1/sweetalert2.min.js" ></script>
+		<script src="./assets/vendors/cropperjs/1.5.9/cropper.min.js" ></script>
 		
 		<script defer src="./assets/js/app.js"></script>
 <script>
+"use strict";
+var isImageCropped = false;
+var croppedImgBlobData = "";
+var mimeType = "image/jpeg";
+//$("#cropImageModal").modal("show");
 $(function() {
 
 //jQuery time
@@ -422,10 +656,35 @@ $(".previous").click(function(){
 
 $(".submit").click(function(e){
 	e.preventDefault();
-	if(validateForm($(this).parent()[0]) == true){
-		alert("ok")
+	if(isImageCropped == false){
+		$(this).parent().find(".inp").click();
+		return false;
+	}else{
+		let form = document.querySelector("#msform"); //$("#msform"); // $(this).parents("form");
+		let fd = new FormData(form);
+		fd.append('cropped_image', croppedImgBlobData, 'user.'+mimeType.slice(6));
+		
+$.ajax("action.php", {
+	method: "post",
+	data: fd,
+	processData: false,
+	contentType: false,
+	success: function(res) {
+		$("#user-img").attr('src', "./assets/img/wa-sq-user-img.png")
+		alert("success: "+res);
+		fd = null;
+		isImageCropped = false;
+		$('#msform')[0].reset();
+		$(".inp").removeClass("is-valid");
+	},
+	error: function(err) {
+		alert("err: "+err)
+	},
+	complete: function (e){
+		alert("complete: "+JSON.stringify(e));
 	}
-	return false;
+});
+	}
 })
 
 });
@@ -475,9 +734,6 @@ function validateInp(x) {
 		});
 		$('[data-toggle="tooltip"]').tooltip();
 	
-	
-	
-	
 	}, false);
 })();
 
@@ -515,5 +771,178 @@ function validateForm(x) {
 }
 </script>
 
+<script type="text/javascript">
+window.addEventListener('DOMContentLoaded', function () {
+  //var $preloader = $('.preloader');
+  //var avatar = document.getElementById('avatar');
+  var croppableImg = document.getElementById('croppable-img');
+  var selectImg = document.getElementById('select-img');
+  var cropBtn = document.querySelector("#cropBtn")
+  var $cropImgModal = $('#cropImageModal');
+  var mimeType = "image/jpeg";
+  var cropper;
+
+  //$('[data-toggle="tooltip"]').tooltip();
+
+  selectImg.addEventListener('change', function (e) {
+    
+    var files = e.target.files;
+    var done = function (url) {
+      selectImg.value = '';
+      croppableImg.src = url;
+      //$preloader.fadeIn();
+      //$alert.hide();
+      $cropImgModal.modal('show');
+    };
+    var reader;
+    var file;
+    var url;
+
+    if (files && files.length > 0) {
+      file = files[0];
+
+      if (URL) {
+        done(URL.createObjectURL(file));
+      } else if (FileReader) {
+        reader = new FileReader();
+        reader.onload = function (e) {
+          done(reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  });
+
+  $cropImgModal.on('shown.bs.modal', function () {
+    cropper = new Cropper(croppableImg, {
+      /*aspectRatio: 1,
+      viewMode: 3,*/
+      
+     aspectRatio: 1,
+     dragMode: 'move',
+     //preview : '.croppingPreview',
+     autoCropArea: 1,
+     restore: !1,
+     modal: !1,
+     highlight: !1,
+     fillColor: '#fff',
+     cropBoxMovable: !1,
+     cropBoxResizable: !1,
+     toggleDragModeOnDblclick: !1,
+     viewMode: 3,
+     ready: function () {
+         $cropImgModal.css("visibility","visible");
+         //document.querySelector("[data-crop-tool]").addEventListener("click", function (){
+	       //  alert(cropper.getData().scaleX)
+         //})
+         //$preloader.fadeOut();
+        // alert('load');
+        $("[data-tool]").on("click", function (){
+	        //cropper.rotate(45);
+	        let tool = $(this).data("tool");
+	        
+	        //alert(tool.data("tool")
+	        switch(tool){
+		        case "rotateLeft" : cropper.rotate(-45);
+		        break;
+		        case "rotateRight" : cropper.rotate(45);
+		        break;
+		        case "flipX" : cropper.scaleX(-1);
+		        break;
+		        case "flipY" : cropper.scaleY(-1);
+		        break;
+		        case "reset" : cropper.reset();
+		        break;
+	        }
+        })
+     }
+    });
+  }).on('hidden.bs.modal', function () {
+    cropper.destroy();
+    cropper = null;
+      $cropImgModal.css("visibility","hidden");
+  });
+
+  cropBtn.addEventListener('click', function () {
+    //var initialAvatarURL;
+    var canvas;
+
+    $cropImgModal.modal('hide');
+
+    if (cropper) {
+      canvas = cropper.getCroppedCanvas({
+        width: 600,
+        height: 600,
+      });
+      //initialAvatarURL = avatar.src;
+      //avatar.src = canvas.toDataURL();
+      $("#user-img").attr('src', canvas.toDataURL())
+      //$progress.show();
+      //$alert.removeClass('alert-success alert-warning');
+      canvas.toBlob(function (blob) {
+      isImageCropped = true;
+      croppedImgBlobData = blob;
+      //fd.append('cropped_image', blob, 'user.'+mimeType.slice(6));
+      /*/alert(blob);
+        var formData = new FormData();
+
+          formData.append('cropped_image', blob, 'user.'+mimeType.slice(6));
+          formData.append('fileExt', mimeType.slice(6));
+          formData.append('action', 'blob');
+          
+	      $.ajax('action.php', {
+          method: 'POST',
+          data: formData,
+          processData: false,
+          contentType: false,
+
+          xhr: function () {
+            var xhr = new XMLHttpRequest();
+
+            xhr.upload.onprogress = function (e) {
+              var percent = '0';
+              var percentage = '0%';
+
+              if (e.lengthComputable) {
+                percent = Math.round((e.loaded / e.total) * 100);
+                percentage = percent + '%';
+                //$progressBar.width(percentage).attr('aria-valuenow', percent).text(percentage);
+              }
+            };
+
+            return xhr;
+          },
+
+          success: function (res) {
+            //$("#uploadImg").attr("src", res.imgPath);
+            cropper = null;
+            alert(res);
+            //window.location.href = "./welcome";
+            //$alert.show().addClass('alert-success').text(JSON.stringify(res));
+          },
+
+          error: function () {
+            //avatar.src = initialAvatarURL;
+            $alert.show().addClass('alert-warning').text('Upload error');
+          },
+
+          complete: function () {
+            $progress.hide();
+          },
+        });*/
+      
+      
+      }, mimeType);
+    }
+  });
+  
+  
+  
+  $(".select-image").on("click", function (){
+	 $("#select-img").click();
+  });
+});
+
+</script>
 	</body>
 </html>
