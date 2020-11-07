@@ -44,7 +44,7 @@
 /*basic reset*/
 * {margin: 0; padding: 0;}
 /* user image preview */
-.user-img-preview{
+.userImgSec{
 position:relative;
 top:0;
 left:0;
@@ -61,7 +61,7 @@ padding:0 !important;
 margin:0 !important;width:100%;
 height:100%;
 }
-.user-img-preview .tool{
+.userImgSec .userImgSec-toolBox{
 position:absolute;
 bottom:-0px;
 left:0;
@@ -72,11 +72,11 @@ z-index:1;
 transition:.3s;
 display:flex;
 }
-.user-img-preview:hover .tool{
+.userImgSec:hover .userImgSec-toolBox{
 ransform:translateY(0);
 bottom:0;
 }
-.user-img-preview .tool .toolBtn {
+.userImgSec .userImgSec-toolBox .userImgSec-toolBtn {
 position:relative;
 flex-grow:1;
 height:100%;
@@ -84,14 +84,14 @@ background:transparent;
 border:none;
 color:#fff;
 }
-.user-img-preview .tool .toolBtn .fa{
+.userImgSec .userImgSec-toolBox .userImgSec-toolBtn .fa{
 position:absolute;
 top:20%;
 left:50%;
 transform:translateX(-50%);
 white-space:nowrap;
 }
-.user-img-preview .tool .toolBtn span{
+.userImgSec .userImgSec-toolBox .userImgSec-toolBtn span{
 position:absolute;
 bottom:15%;
 font-size:.5rem;
@@ -99,71 +99,24 @@ left:50%;
 transform:translateX(-50%);
 white-space:nowrap;
 }
-.user-img-preview .tool button:active {
+.userImgSec .userImgSec-toolBox button:active {
 background:#000;
 outline:none;
 }
-.user-img-preview .tool button:hover{
+.userImgSec .userImgSec-toolBox button:hover{
 outline:none;
 }
 
-/* edit image section */
-.editBox {
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(200,200,200,.5);
-}
-.editBox img.editCropBox{
-	width:300px;
-	height:300px;
-	background:#fff;
-}
-.editTool{
-	display:flex;
-	width: 100%;
-	background:rgba(0,0,0,.8);
-	height:49px;
-}
-.editTool .cropToolBtn {
-flex-grow:1;
-height:100%;
-background:transparent;
-border:none;
-color:#fff;
-transition:0.3s ;
-position:relative;
-}
-.editTool .cropToolBtn .fa{
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-top:25%;
-}
-.editTool .cropToolBtn span{
-position:absolute;
-bottom:15%;
-font-size:.5rem;
-left:50%;
-transform:translateX(-50%);
-white-space:nowrap;
-}
-.editTool .cropToolBtn:active {
-background:var(--bs-info);
-backgroun:;
-outline:none;
-}
-.editTool .cropToolBtn:hover {
-outline:none;
-}
-.cropBox, .cropBox img{
+#cropImageModal .cropBox, 
+.cropBox img{
 width:200px;
 height:200px;
 position:relative;
 }
-.modal-content{
+#cropImageModal {
+visibility:hidden;
+}
+#cropImageModal  .modal-content{
 width:360px !important;
 }
 </style>
@@ -218,47 +171,6 @@ width:360px !important;
 		<li>Upload image</li>
 	</ul>
 	<form id="msform" >
-	<!-- page 
-	<div class="page" >
-	<h2 class="fs-title">Upload Image</h2>
-	<h3 class="fs-subtitle">This is step 4</h3>
-	
-	<div class="user-img-preview mx-auto borde mb-3" >
-		<img id="user-img" class="border"  src="./assets/img/wa-sq-user-img.png">
-	<input name="select-img" 
-		type="file"  
-		data-toggle="tooltip" 
-		title="Select image." 
-		id="select-img" 
-		data-field-name="Image." 
-		data-title="Select image." 
-		class="inp visually-hidden" 
-		placeholder=" " 
-		required
-		onchange="validateInp(this)" 
-	attern="" >
-		<div class="tool" >
-			<button type="button" class="toolBtn" ><i class="fa fa-upload" aria-hidden="true"></i><span>Change Image</span></button>
-			<button type="button" class="toolBtn" ><i class="fa fa-pencil mx-auto" aria-hidden="true"></i><span>Edit Image</span></button>
-		</div>
-	</div>
-		
-	<input type="button" name="previous" class="previous btn btn-secondary mr-2" value="Previous" />
-	<input type="submit" name="submit" class="submit btn btn-success ml-2" value="Submit" />
-		
-		<div class="editBox d-none" >
-			<img class="editCropBox mx-auto mt-2" src="./assets/img/wa-sq-user-img.png"  >
-			<div class="editTool" >
-				<button class="cropToolBtn" ><i class="fa fa-times" aria-hidden="true"></i><span>Cancel</span></button>
-				<button class="cropToolBtn" ><i class="fa fa-refresh " aria-hidden="true"></i><span>Reset</span></button>
-				<button class="cropToolBtn" ><i class="fa fa-undo" aria-hidden="true"></i><span>Rotate -45</span></button>
-				<button class="cropToolBtn" ><i class="fa fa-repeat " aria-hidden="true"></i><span>Rotate +45</button>
-				<button class="cropToolBtn" ><i class="fa fa-crop" aria-hidden="true"></i><span>Crop</span></button>
-				<button class="cropToolBtn" ><i class="fa fa-check " aria-hidden="true"></i><span>Save</span></button>
-			</div>
-		</div>
-	</div>
-	
 	
 	<!-- .pages -->
 	<div class="page" >
@@ -441,7 +353,7 @@ width:360px !important;
 	<h2 class="fs-title">Upload Image</h2>
 	<h3 class="fs-subtitle">This is step 4</h3>
 	
-	<div class="user-img-preview mx-auto mb-3" >
+	<div class="userImgSec mx-auto mb-3" >
 		<img id="user-img" class="border"  src="./assets/img/wa-sq-user-img.png">
 	<input name="select-img" 
 		type="file"  
@@ -455,60 +367,16 @@ width:360px !important;
 		required
 		onchange="validateInp(this)" 
 	attern="" >
-		<div class="tool" >
-			<button type="button" class="toolBtn select-image" ><i class="fa fa-upload" aria-hidden="true"></i><span>Select Image</span></button>
-			<button type="button" class="toolBtn" ><i class="fa fa-pencil mx-auto" aria-hidden="true"></i><span>Edit Image</span></button>
+		<div class="userImgSec-toolBox" >
+			<button type="button" class="userImgSec-toolBtn select-image" ><i class="fa fa-camera" aria-hidden="true"></i><span>Select Image</span></button>
+			<button type="button" class="userImgSec-toolBtn" ><i class="fa fa-pencil mx-auto" aria-hidden="true"></i><span>Edit Image</span></button>
 		</div>
 	</div>
 		
 	<input type="button" name="previous" class="previous btn btn-secondary mr-2" value="Previous" />
 	<input type="submit" name="submit" class="submit btn btn-success ml-2" value="Submit" />
-		
-		<div class="editBox d-none" >
-			<img class="editCropBox mx-auto mt-2" src="./assets/img/wa-sq-user-img.png"  >
-			<div class="editTool" >
-				<button type="button" class="cropToolBtn" ><i class="fa fa-times" aria-hidden="true"></i><span>Cancel</span></button>
-				<button type="button" class="cropToolBtn" ><i class="fa fa-refresh " aria-hidden="true"></i><span>Reset</span></button>
-				<button type="button" class="cropToolBtn" ><i class="fa fa-undo" aria-hidden="true"></i><span>Rotate -45</span></button>
-				<button type="button" class="cropToolBtn" ><i class="fa fa-repeat " aria-hidden="true"></i><span>Rotate +45</button>
-				<button type="button" class="cropToolBtn" ><i class="fa fa-crop" aria-hidden="true"></i><span>Crop</span></button>
-				<button type="button" class="cropToolBtn" ><i class="fa fa-check " aria-hidden="true"></i><span>Save</span></button>
-			</div>
-		</div>
 	</div>
 	
-	
-	
-<!-- page 
-		<div class="page" >
-		<h2 class="fs-title">Upload Image</h2>
-		<h3 class="fs-subtitle">This is step 4</h3>
-
-<div class="user-img-preview mx-auto mb-3" >
-	<label for="select-img">
-	<img id="user-img" class="border"  src="./assets/img/wa-sq-user-img.png">
-	</label>
-<input name="select-img" 
-	type="file"  
-	data-toggle="tooltip" 
-	title="Select image." 
-	id="select-img" 
-	data-field-name="Image." 
-	data-title="Select image." 
-	class="inp visually-hidden" 
-	placeholder=" " 
-	required
-	onchange="validateInp(this)" 
-attern="" >
-</div>
-
-
-			
-		<input type="button" name="previous" class="previous btn btn-secondary mr-2" value="Previous" />
-		<input type="submit" name="submit" class="submit btn btn-success ml-2" value="Submit" />
-		
-		
--->
 	</div>
 </form>
 </div>
@@ -860,7 +728,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }).on('hidden.bs.modal', function () {
     cropper.destroy();
     cropper = null;
-      $cropImgModal.css("visibility","hidden");
+      $cropImgModal.delay("fast").css("visibility","hidden");
   });
 
   cropBtn.addEventListener('click', function () {
